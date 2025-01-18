@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { QuestionNavigation } from './components/QuestionNavigation'
 import { Question } from './components/Question'
 import { Particles } from './components/ui/particles'
