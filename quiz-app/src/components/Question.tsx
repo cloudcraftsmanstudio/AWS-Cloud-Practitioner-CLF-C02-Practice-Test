@@ -176,13 +176,13 @@ export function Question() {
                       <img 
                         src={
                           isCorrect && isFirstAttempt
-                            ? "/AWS-Cloud-Practitioner-CLF-C02-Practice-Test/Source/images/correct-first-attempt.jpg"
+                            ? "./Source/images/correct-first-attempt.jpg"
                             : !isCorrect && attempts === 1
-                            ? "/AWS-Cloud-Practitioner-CLF-C02-Practice-Test/Source/images/incorrect-second-attempt.jpg"
+                            ? "./Source/images/incorrect-second-attempt.jpg"
                             : !isCorrect && attempts === 2
-                            ? "/AWS-Cloud-Practitioner-CLF-C02-Practice-Test/Source/images/correct-answer-after-all-incorrct.jpg"
+                            ? "./Source/images/correct-answer-after-all-incorrct.jpg"
                             : isCorrect && attempts === 2
-                            ? "/AWS-Cloud-Practitioner-CLF-C02-Practice-Test/Source/images/correct-first-attempt.jpg"
+                            ? "./Source/images/correct-first-attempt.jpg"
                             : ""
                         }
                         alt="Feedback"
