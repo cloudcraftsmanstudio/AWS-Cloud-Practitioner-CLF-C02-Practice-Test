@@ -1,5 +1,5 @@
 export const questionTree = {
-    name: 'AWS Quiz Questions',
+    name: 'Practice Questions',
     nodes: [
         {
             name: 'Question-1',

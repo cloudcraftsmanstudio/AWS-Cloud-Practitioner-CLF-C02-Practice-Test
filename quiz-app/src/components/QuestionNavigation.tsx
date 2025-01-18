@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { questions } from '../data/questions'
 
 const questionNodes = {
-  name: "AWS Quiz Questions",
+  name: "Practice Questions",
   nodes: questions.map((_, index) => ({
     name: `Question-${index + 1}`
   }))
@@ -21,7 +21,7 @@ export function QuestionNavigation() {
 
   return (
     <div className="p-6 w-full border-r border-white/10 bg-black/50">
-      <h1 className="text-xl font-bold mb-4 text-white/90">AWS Quiz</h1>
+      <h1 className="text-xl font-bold mb-4 text-white/90">AWS-Cloud-Practitioner-CLF-C02-Practice-Test</h1>
       <ul>
         <FilesystemItem 
           node={questionNodes} 
