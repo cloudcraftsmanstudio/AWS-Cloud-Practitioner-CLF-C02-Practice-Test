@@ -9,7 +9,7 @@ function App() {
 
   return (
     <Router>
-      <div className="flex relative min-h-screen bg-black overflow-hidden">
+      <div className="flex relative min-h-screen bg-black">
         <Particles
           className="absolute inset-0"
           quantity={150}
@@ -58,9 +58,10 @@ function App() {
             bg-black/95 md:bg-transparent
             overflow-auto
             flex-shrink-0
+            md:h-screen
           `}
         >
-          <div className="pt-16 md:pt-0">
+          <div className="pt-16 md:pt-0 h-full">
             <QuestionNavigation onQuestionSelect={() => setIsSidebarOpen(false)} />
           </div>
         </div>
@@ -74,9 +75,9 @@ function App() {
         )}
 
         {/* Main Content */}
-        <main className="flex-1 relative">
-          <div className="absolute inset-0 flex items-center justify-center p-4">
-            <div className="w-full max-w-4xl mx-auto md:ml-0">
+        <main className="flex-1 min-h-screen md:h-screen overflow-auto">
+          <div className="flex min-h-full items-center justify-center p-4">
+            <div className="w-full max-w-4xl mx-auto">
               <Routes>
                 <Route path="/question/:id" element={<Question />} />
                 <Route path="/" element={<Navigate to="/question/1" replace />} />
