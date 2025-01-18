@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { ChevronRight, Folder, File } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
+import { Link } from "react-router-dom"
 
 type Node = {
   name: string
@@ -37,12 +38,6 @@ export function FilesystemItem({
       />
     )
 
-  const handleClick = () => {
-    if (!node.nodes && onSelect) {
-      onSelect(node.name)
-    }
-  }
-
   const ChildrenList = () => {
     const children = node.nodes?.map((node) => (
       <FilesystemItem 
@@ -74,34 +69,34 @@ export function FilesystemItem({
     return isOpen && <ul className="pl-6">{children}</ul>
   }
 
+  const isQuestion = !node.nodes
+  const questionNumber = isQuestion ? node.name.split('-')[1] : null
+
   return (
     <li key={node.name}>
-      <span 
-        className={`flex items-center gap-1.5 py-1 text-white/80 ${
-          !node.nodes ? 'cursor-pointer hover:text-blue-400 transition-colors duration-200' : ''
-        }`}
-        onClick={handleClick}
-      >
-        {node.nodes && node.nodes.length > 0 && (
-          <button onClick={(e) => {
-            e.stopPropagation()
-            setIsOpen(!isOpen)
-          }} className="p-1 -m-1">
+      {isQuestion ? (
+        <Link 
+          to={`/question/${questionNumber}`}
+          className="flex items-center gap-1.5 py-1 text-white/80 hover:text-blue-400 transition-colors duration-200"
+          onClick={() => onSelect?.(node.name)}
+        >
+          <File className="ml-[22px] size-6 text-yellow-400" />
+          {node.name}
+        </Link>
+      ) : (
+        <span 
+          className="flex items-center gap-1.5 py-1 text-white/80"
+        >
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="p-1 -m-1"
+          >
             <ChevronIcon />
           </button>
-        )}
-
-        {node.nodes ? (
-          <Folder
-            className={`size-6 text-blue-400 ${
-              node.nodes.length === 0 ? "ml-[22px]" : ""
-            }`}
-          />
-        ) : (
-          <File className="ml-[22px] size-6 text-yellow-400" />
-        )}
-        {node.name}
-      </span>
+          <Folder className="size-6 text-blue-400" />
+          {node.name}
+        </span>
+      )}
 
       <ChildrenList />
     </li>
